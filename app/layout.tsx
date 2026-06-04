@@ -1,12 +1,15 @@
-import { Geist, Geist_Mono, Nunito_Sans, Figtree } from "next/font/google"
+import { Geist_Mono, Nunito_Sans, Figtree } from "next/font/google"
 
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Providers } from "@/components/providers"
 
-const figtreeHeading = Figtree({subsets:['latin'],variable:'--font-heading'});
+const figtreeHeading = Figtree({
+  subsets: ["latin"],
+  variable: "--font-heading",
+})
 
-const nunitoSans = Nunito_Sans({subsets:['latin'],variable:'--font-sans'})
+const nunitoSans = Nunito_Sans({ subsets: ["latin"], variable: "--font-sans" })
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
@@ -20,12 +23,18 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", nunitoSans.variable, figtreeHeading.variable)}
+      className={cn(
+        "antialiased",
+        fontMono.variable,
+        "font-sans",
+        nunitoSans.variable,
+        figtreeHeading.variable
+      )}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
